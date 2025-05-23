@@ -54,6 +54,11 @@ RUN bundle exec bootsnap precompile app/ lib/
 # Final stage for app image
 FROM base
 
+# Install runtime dependencies for pg gem
+RUN apt-get update -qq && \
+    apt-get install --no-install-recommends -y libpq5 && \
+    rm -rf /var/lib/apt/lists /var/cache/apt/archive
+
 # Copy built artifacts: gems, application
 COPY --from=build "${BUNDLE_PATH}" "${BUNDLE_PATH}"
 COPY --from=build /rails /rails
