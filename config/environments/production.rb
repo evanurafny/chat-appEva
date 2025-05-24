@@ -83,8 +83,7 @@ Rails.application.configure do
   # config.host_authorization = { exclude: ->(request) { request.path == "/up" } }
 
  config.action_cable.allowed_request_origins = [
-  'https://chat-appeva-production.up.railway.app',
-  'http://localhost:3000'
+  'https://chat-frontend-eva.vercel.app'
 ]
 
 end
