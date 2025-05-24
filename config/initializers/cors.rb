@@ -7,9 +7,14 @@
 
  Rails.application.config.middleware.insert_before 0, Rack::Cors do
    allow do
-     origins "*"
-
-     resource "*",
+     origins 'https://chat-frontend-eva.vercel.app'
+    
+    resource "/cable",
+      headers: :any,
+      methods: [:get, :post, :options],
+      credentials: true
+    
+    resource "*",
       headers: :any,
       methods: [:get, :post, :put, :patch, :delete, :options, :head]
   end
